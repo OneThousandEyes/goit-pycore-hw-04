@@ -13,6 +13,10 @@ CURRENT_DIR = Path(
 )
 
 
+def error_message(e, err_type):
+    print(f"\n{err_type}: {RED} {e} {RESET}\n")
+    exit()
+
 def total_salary(path):
     """Calculate total and average salary from a file."""
     total = 0
@@ -27,10 +31,7 @@ def total_salary(path):
                         total += salary
                         count += 1
                     except ValueError as e:
-                        err_type = type(e).__name__
-                        print(f"\n{err_type}: {RED} {e} {RESET}\n")
-                        print("Це значення, на жаль, не може бути опрацьовано. \n")
-                        exit()
+                        error_message(e, type(e).__name__)
                 else:
                     print(f"\n{RED} Invalid line format: {line.strip()} {RESET}\n")
                     print("Це значення, на жаль, не може бути опрацьовано. \n")
@@ -38,17 +39,13 @@ def total_salary(path):
         avg_salary = total / count if count > 0 else 0
         return total, avg_salary
     except FileNotFoundError as e:
-        err_type = type(e).__name__
-        print(f"\n{err_type}: {RED} {e} {RESET}\n")
-        exit()
+        error_message(e, type(e).__name__)
     except Exception as e:
-        err_type = type(e).__name__
-        print(f"An unexpected error occurred: {RED} {e} {RESET}")
-        exit()
+        error_message(e, type(e).__name__)
 
 
 if __name__ == '__main__':
-    total, avg_salary = total_salary(CURRENT_DIR / 'task_01_test_file.txt')
+    total, avg_salary = total_salary(CURRENT_DIR / 'task_01_test_file1.txt')
     print(
         f"Загальна сума заробітної плати: {total}, "
         f"Середня заробітна плата: {avg_salary}"
