@@ -11,11 +11,13 @@ CURRENT_DIR = Path(
 
 
 def error_message(e, err_type):
+    """Print error message and exit."""
     print(f"\n{err_type}: {RED} {e} {RESET}\n")
     exit()
 
 
 def get_cats_info(path):
+    """Read cat info from a file and return a list of dictionaries."""
     dict_cats_info = []
     try:
         with open(path, 'r', encoding="UTF-8") as file:
