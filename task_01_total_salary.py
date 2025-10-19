@@ -7,8 +7,10 @@ GREEN = "\033[32m"
 RESET = "\033[0m"
 YELLOW = "\033[33m"
 
-CURRENT_DIR = Path("/Users/vitalii/Documents/goit_local/github/"
-                   "goit-pycore-hw-04/")
+CURRENT_DIR = Path(
+    "/Users/vitalii/Documents/goit_local/github/"
+    "goit-pycore-hw-04/"
+)
 
 
 def total_salary(path):
@@ -47,5 +49,7 @@ def total_salary(path):
 
 if __name__ == '__main__':
     total, avg_salary = total_salary(CURRENT_DIR / 'task_01_test_file.txt')
-    print(f"Загальна сума заробітної плати: {total}, "
-          f"Середня заробітна плата: {avg_salary}")
+    print(
+        f"Загальна сума заробітної плати: {total}, "
+        f"Середня заробітна плата: {avg_salary}"
+    )
